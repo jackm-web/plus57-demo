@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Garcia's Bakery | Panadería in Wimauma, FL</title>
+<meta name="description" content="Fresh pan dulce, breakfast and lunch tacos, and homemade tamales in Wimauma, FL. Barbacoa and menudo on weekends. Call (813) 633-2848.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF6EE; --paper:#FFFDF9; --brown:#2B1B12; --brown-2:#5C4033;
+    --terra:#C8553D; --terra-dk:#A8432E; --pink:#F2C1B6; --gold:#E3A33B; --line:#EADFD0;
+    --radius:18px; --shadow:0 10px 30px rgba(43,27,18,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--brown);background:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.1;letter-spacing:-.01em}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:50;background:rgba(251,246,238,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{font-family:Fraunces,serif;font-weight:800;font-size:1.35rem;text-decoration:none}
+  .logo span{color:var(--terra)}
+  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links a{text-decoration:none;font-weight:500;color:var(--brown-2)}
+  .nav-links a:hover{color:var(--terra)}
+  .lang{border:1.5px solid var(--brown);background:none;border-radius:999px;padding:8px 16px;font:600 .9rem Inter,sans-serif;cursor:pointer;color:var(--brown)}
+  .lang:hover{background:var(--brown);color:var(--cream)}
+
+  /* Buttons */
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 24px;border-radius:999px;font-weight:600;text-decoration:none;transition:transform .15s,background .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:var(--terra);color:#fff;box-shadow:0 8px 20px rgba(200,85,61,.35)}
+  .btn-primary:hover{background:var(--terra-dk)}
+  .btn-ghost{border:2px solid var(--brown);color:var(--brown)}
+  .btn svg{width:18px;height:18px;flex:none}
+
+  /* Hero */
+  .hero{padding:64px 0 80px}
+  .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+  .eyebrow{display:inline-block;font-weight:600;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);margin-bottom:16px}
+  .hero h1{font-size:clamp(2.6rem,6vw,4.4rem);font-weight:800;margin-bottom:20px}
+  .hero h1 em{font-style:normal;color:var(--terra)}
+  .hero p.lead{font-size:1.15rem;color:var(--brown-2);max-width:30em;margin-bottom:30px}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:26px}
+  .status{display:inline-flex;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-weight:600;font-size:.92rem}
+  .dot{width:10px;height:10px;border-radius:50%;background:#999}
+  .dot.open{background:#2E9E5B;box-shadow:0 0 0 4px rgba(46,158,91,.18)}
+  .dot.closed{background:var(--terra)}
+
+  /* Photo slots: drop real photos into /images with these names and they show up automatically */
+  .photo{border-radius:var(--radius);background-size:cover;background-position:center;position:relative;overflow:hidden}
+  .hero-photo{aspect-ratio:4/5;box-shadow:var(--shadow);
+    background-image:url(images/hero.jpg),radial-gradient(circle at 30% 25%,#F6D8C8 0 18%,transparent 19%),radial-gradient(circle at 70% 60%,#E9B48F 0 22%,transparent 23%),radial-gradient(circle at 35% 80%,#F2C1B6 0 14%,transparent 15%),linear-gradient(145deg,#E7C9A9,#C98F63)}
+  .hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(43,27,18,.25),transparent 45%)}
+  .badge{position:absolute;left:-18px;bottom:28px;background:var(--paper);border-radius:14px;padding:14px 18px;box-shadow:var(--shadow);z-index:2;font-weight:600}
+  .badge small{display:block;font-weight:500;color:var(--brown-2);font-size:.8rem}
+  .hero-art{position:relative}
+
+  /* Scallop divider */
+  .scallop{height:22px;background:radial-gradient(circle at 12px 0,var(--cream) 12px,var(--paper) 13px) repeat-x;background-size:24px 22px}
+
+  section{padding:84px 0}
+  .section-head{text-align:center;max-width:620px;margin:0 auto 48px}
+  .section-head h2{font-size:clamp(2rem,4vw,2.8rem);margin-bottom:12px}
+  .section-head p{color:var(--brown-2)}
+
+  /* Perks */
+  .perks{background:var(--paper);padding:40px 0}
+  .perk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .perk{display:flex;gap:14px;align-items:flex-start}
+  .perk .ico{flex:none;width:46px;height:46px;border-radius:12px;background:var(--cream);display:grid;place-items:center;color:var(--terra)}
+  .perk .ico svg{width:22px;height:22px}
+  .perk h3{font-family:Inter,sans-serif;font-size:1rem;font-weight:700}
+  .perk p{font-size:.92rem;color:var(--brown-2)}
+
+  /* Menu */
+  #menu{background:var(--paper)}
+  .menu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .card{background:var(--cream);border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);transition:transform .2s,box-shadow .2s}
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .card .photo{aspect-ratio:4/3;border-radius:0}
+  .card-body{padding:18px 20px 22px}
+  .card h3{font-size:1.3rem;margin-bottom:6px}
+  .card p{font-size:.93rem;color:var(--brown-2)}
+  .p-pan{background-image:url(images/pan-dulce.jpg),radial-gradient(circle at 35% 45%,#F6D3C4 0 20%,transparent 21%),radial-gradient(circle at 68% 58%,#F0C78E 0 18%,transparent 19%),linear-gradient(135deg,#E9CFAF,#D3A574)}
+  .p-break{background-image:url(images/breakfast-tacos.jpg),radial-gradient(ellipse at 50% 60%,#F3E1B5 0 30%,transparent 31%),linear-gradient(135deg,#EBC98C,#C9853F)}
+  .p-lunch{background-image:url(images/lunch-tacos.jpg),radial-gradient(ellipse at 50% 55%,#B9C98A 0 26%,transparent 27%),linear-gradient(135deg,#D9A26A,#9C5B33)}
+  .p-tamal{background-image:url(images/tamales.jpg),radial-gradient(ellipse at 50% 50%,#EFE0BE 0 28%,transparent 29%),linear-gradient(135deg,#C9B27E,#8B7A45)}
+
+  .special{margin-top:34px;background:var(--brown);color:var(--cream);border-radius:calc(var(--radius) + 4px);padding:34px 38px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;position:relative;overflow:hidden}
+  .special::before{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:var(--terra);opacity:.35}
+  .special .tag{display:inline-block;background:var(--gold);color:var(--brown);font-weight:700;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:999px;margin-bottom:12px}
+  .special h3{font-size:clamp(1.6rem,3.5vw,2.3rem);margin-bottom:6px}
+  .special p{opacity:.85}
+  .special .btn{position:relative;background:var(--cream);color:var(--brown)}
+
+  /* Hours + Visit */
+  .visit-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:36px;align-items:stretch}
+  .panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:32px}
+  .panel h2{font-size:2rem;margin-bottom:18px}
+  .hours{list-style:none}
+  .hours li{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px dashed var(--line);font-weight:500}
+  .hours li:last-child{border-bottom:0}
+  .hours li.today{color:var(--terra);font-weight:700}
+  .hours li.today span:first-child::after{content:attr(data-today);margin-left:8px;font-size:.72rem;background:var(--terra);color:#fff;padding:2px 8px;border-radius:999px;vertical-align:middle}
+  .contact-lines{margin-top:24px;display:grid;gap:10px}
+  .contact-lines a{display:flex;gap:10px;align-items:center;text-decoration:none;font-weight:600}
+  .contact-lines a:hover{color:var(--terra)}
+  .contact-lines svg{width:18px;height:18px;color:var(--terra);flex:none}
+  .map{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);min-height:380px;box-shadow:var(--shadow)}
+  .map iframe{width:100%;height:100%;min-height:380px;border:0;display:block}
+  .reviews-cta{margin-top:20px}
+
+  footer{background:var(--brown);color:#d9cbbd;padding:44px 0 110px;font-size:.92rem}
+  .foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  footer .logo{color:var(--cream)}
+  .demo-note{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);font-size:.8rem;opacity:.7}
+
+  /* Mobile sticky action bar */
+  .mobile-bar{display:none;position:fixed;left:12px;right:12px;bottom:12px;z-index:60;gap:10px}
+  .mobile-bar a{flex:1;justify-content:center;padding:15px 10px}
+  .mobile-bar .btn-ghost{background:var(--paper)}
+
+  @media (max-width:900px){
+    .hero-grid,.visit-grid{grid-template-columns:1fr}
+    .hero{padding:36px 0 56px}
+    .hero-art{order:-1}
+    .hero-photo{aspect-ratio:16/11}
+    .badge{left:14px;bottom:14px}
+    .menu-grid{grid-template-columns:repeat(2,1fr)}
+    .perk-grid{grid-template-columns:1fr}
+    .nav-links a{display:none}
+    .mobile-bar{display:flex}
+    section{padding:60px 0}
+  }
+  .mobile-bar{transition:transform .25s,opacity .25s}
+  .mobile-bar.hide{transform:translateY(120%);opacity:0;pointer-events:none}
+  .hours li span{white-space:nowrap}
+  @media (max-width:520px){
+    .menu-grid{grid-template-columns:1fr}
+    .special{padding:28px 24px}
+    .cta-row .btn{flex:1;justify-content:center;padding:14px 12px;white-space:nowrap;font-size:.95rem}
+    .hours li{font-size:.95rem}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo">Garcia's <span>Bakery</span></a>
+    <nav class="nav-links">
+      <a href="#menu" data-i18n="navMenu">Menu</a>
+      <a href="#visit" data-i18n="navHours">Hours</a>
+      <a href="#visit" data-i18n="navVisit">Visit</a>
+      <button class="lang" id="langBtn" aria-label="Cambiar a español">Español</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow" data-i18n="eyebrow">Panadería mexicana in Wimauma</span>
+        <h1 data-i18n-html="h1">Fresh pan dulce, <em>every morning.</em></h1>
+        <p class="lead" data-i18n="lead">Pan dulce, tacos, and homemade tamales, made fresh every day in a shop that's always spotless.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="tel:+18136332848">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.18 2 2 0 0 1 4.08 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.1 9.9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span data-i18n="callOrder">Call to order</span>
+          </a>
+          <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&destination=5805+State+Rd+674+Wimauma+FL+33598" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span data-i18n="directions">Get directions</span>
+          </a>
+        </div>
+        <div class="status"><span class="dot" id="statusDot"></span><span id="statusText">Checking hours…</span></div>
+      </div>
+      <div class="hero-art">
+        <div class="photo hero-photo" role="img" aria-label="Fresh pan dulce in the display case"></div>
+        <div class="badge"><span data-i18n="badgeTop">Open at 5am</span><small data-i18n="badgeSub">Monday to Saturday</small></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="perks">
+    <div class="wrap perk-grid">
+      <div class="perk">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M4.9 4.9l2.8 2.8M2 12h4M19.1 4.9l-2.8 2.8M22 12h-4"/><circle cx="12" cy="14" r="5"/></svg></div>
+        <div><h3 data-i18n="p1t">Baked fresh daily</h3><p data-i18n="p1d">Everything is made in house, every day.</p></div>
+      </div>
+      <div class="perk">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8H20l-4.9 3.6 1.9 5.8-5-3.6-5 3.6 1.9-5.8L4 8.8h6.1z"/></svg></div>
+        <div><h3 data-i18n="p2t">Always spotless</h3><p data-i18n="p2d">A clean shop you'll feel good bringing the family to.</p></div>
+      </div>
+      <div class="perk">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <div><h3 data-i18n="p3t">Open early</h3><p data-i18n="p3d">Grab breakfast on the way to work, starting at 5am.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scallop" aria-hidden="true"></div>
+  <section id="menu">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 data-i18n="menuTitle">What we make</h2>
+        <p data-i18n="menuSub">Stop by the case or call ahead and we'll have it ready.</p>
+      </div>
+      <div class="menu-grid">
+        <article class="card"><div class="photo p-pan" role="img" aria-label="Pan dulce"></div><div class="card-body"><h3>Pan Dulce</h3><p data-i18n="m1">Sweet bread baked fresh every morning.</p></div></article>
+        <article class="card"><div class="photo p-break" role="img" aria-label="Breakfast tacos"></div><div class="card-body"><h3 data-i18n="m2t">Breakfast Tacos</h3><p data-i18n="m2">Ready early, so you can start the day right.</p></div></article>
+        <article class="card"><div class="photo p-lunch" role="img" aria-label="Lunch tacos"></div><div class="card-body"><h3 data-i18n="m3t">Lunch Tacos</h3><p data-i18n="m3">A quick, filling lunch that beats the drive-thru.</p></div></article>
+        <article class="card"><div class="photo p-tamal" role="img" aria-label="Homemade tamales"></div><div class="card-body"><h3 data-i18n="m4t">Homemade Tamales</h3><p data-i18n="m4">Made by hand, the way they should be.</p></div></article>
+      </div>
+
+      <div class="special">
+        <div>
+          <span class="tag" data-i18n="wkTag">Weekends only</span>
+          <h3 data-i18n="wkTitle">Barbacoa &amp; Menudo</h3>
+          <p data-i18n="wkSub">Only on weekends. Come early.</p>
+        </div>
+        <a class="btn" href="tel:+18136332848" data-i18n="wkBtn">Call to reserve</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit">
+    <div class="wrap visit-grid">
+      <div class="panel">
+        <h2 data-i18n="hoursTitle">Hours</h2>
+        <ul class="hours" id="hoursList">
+          <li data-days="1,2,3,4,5"><span data-i18n="monFri">Monday to Friday</span><span>5:00am – 8:00pm</span></li>
+          <li data-days="6"><span data-i18n="sat">Saturday</span><span>5:00am – 6:00pm</span></li>
+          <li data-days="0"><span data-i18n="sun">Sunday</span><span>7:00am – 2:00pm</span></li>
+        </ul>
+        <div class="contact-lines">
+          <a href="tel:+18136332848"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.18 2 2 0 0 1 4.08 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.1 9.9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>(813) 633-2848</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=5805+State+Rd+674+Wimauma+FL+33598" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>5805 State Rd 674, Wimauma, FL 33598</a>
+        </div>
+        <a class="btn btn-ghost reviews-cta" href="https://www.google.com/maps/search/?api=1&query=Garcia%27s+Bakery+5805+State+Rd+674+Wimauma+FL" target="_blank" rel="noopener" data-i18n="reviews">See our reviews on Google</a>
+      </div>
+      <div class="map">
+        <iframe title="Map to Garcia's Bakery" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=5805+State+Rd+674,+Wimauma,+FL+33598&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div><a href="#" class="logo">Garcia's <span style="color:var(--gold)">Bakery</span></a><p style="margin-top:8px" data-i18n="footTag">Panadería in Wimauma, Florida</p></div>
+      <div><p>5805 State Rd 674, Wimauma, FL 33598</p><p><a href="tel:+18136332848">(813) 633-2848</a></p></div>
+    </div>
+    <p class="demo-note" data-i18n="demo">Demo site. This is a concept design and not the official website of Garcia's Bakery.</p>
+  </div>
+</footer>
+
+<div class="mobile-bar">
+  <a class="btn btn-primary" href="tel:+18136332848" data-i18n="call">Call</a>
+  <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&destination=5805+State+Rd+674+Wimauma+FL+33598" target="_blank" rel="noopener" data-i18n="directions">Get directions</a>
+</div>
+
+<script>
+  const T = {
+    en:{navMenu:"Menu",navHours:"Hours",navVisit:"Visit",eyebrow:"Panadería mexicana in Wimauma",
+      h1:"Fresh pan dulce, <em>every morning.</em>",
+      lead:"Pan dulce, tacos, and homemade tamales, made fresh every day in a shop that's always spotless.",
+      callOrder:"Call to order",directions:"Get directions",badgeTop:"Open at 5am",badgeSub:"Monday to Saturday",
+      p1t:"Baked fresh daily",p1d:"Everything is made in house, every day.",
+      p2t:"Always spotless",p2d:"A clean shop you'll feel good bringing the family to.",
+      p3t:"Open early",p3d:"Grab breakfast on the way to work, starting at 5am.",
+      menuTitle:"What we make",menuSub:"Stop by the case or call ahead and we'll have it ready.",
+      m1:"Sweet bread baked fresh every morning.",m2t:"Breakfast Tacos",m2:"Ready early, so you can start the day right.",
+      m3t:"Lunch Tacos",m3:"A quick, filling lunch that beats the drive-thru.",m4t:"Homemade Tamales",m4:"Made by hand, the way they should be.",
+      wkTag:"Weekends only",wkTitle:"Barbacoa & Menudo",wkSub:"Only on weekends. Come early.",wkBtn:"Call to reserve",
+      hoursTitle:"Hours",monFri:"Monday to Friday",sat:"Saturday",sun:"Sunday",sunHrs:"Call to confirm",
+      reviews:"See our reviews on Google",footTag:"Panadería in Wimauma, Florida",call:"Call",today:"Today",
+      demo:"Demo site. This is a concept design and not the official website of Garcia's Bakery.",
+      openUntil:h=>`Open now · until ${h}`,closedOpens:h=>`Closed · opens ${h}`,sunday:"Sunday hours: call to confirm",langBtn:"Español"},
+    es:{navMenu:"Menú",navHours:"Horario",navVisit:"Visítanos",eyebrow:"Panadería mexicana en Wimauma",
+      h1:"Pan dulce fresco, <em>cada mañana.</em>",
+      lead:"Pan dulce, tacos y tamales caseros, hechos frescos todos los días en una tienda siempre impecable.",
+      callOrder:"Llama para ordenar",directions:"Cómo llegar",badgeTop:"Abrimos a las 5am",badgeSub:"De lunes a sábado",
+      p1t:"Horneado fresco a diario",p1d:"Todo se hace aquí mismo, todos los días.",
+      p2t:"Siempre impecable",p2d:"Una tienda limpia para venir con toda la familia.",
+      p3t:"Abrimos temprano",p3d:"Llévate el desayuno camino al trabajo, desde las 5am.",
+      menuTitle:"Lo que hacemos",menuSub:"Pasa a ver la vitrina o llama antes y te lo tenemos listo.",
+      m1:"Pan dulce horneado fresco cada mañana.",m2t:"Tacos de Desayuno",m2:"Listos temprano para empezar bien el día.",
+      m3t:"Tacos de Almuerzo",m3:"Un almuerzo rápido y sabroso, mejor que el drive-thru.",m4t:"Tamales Caseros",m4:"Hechos a mano, como debe ser.",
+      wkTag:"Solo fines de semana",wkTitle:"Barbacoa y Menudo",wkSub:"Solo los fines de semana. ¡Llega temprano!",wkBtn:"Llama para apartar",
+      hoursTitle:"Horario",monFri:"Lunes a viernes",sat:"Sábado",sun:"Domingo",sunHrs:"Llama para confirmar",
+      reviews:"Lee nuestras reseñas en Google",footTag:"Panadería en Wimauma, Florida",call:"Llamar",today:"Hoy",
+      demo:"Sitio de demostración. Este es un diseño de concepto y no el sitio oficial de Garcia's Bakery.",
+      openUntil:h=>`Abierto ahora · hasta las ${h}`,closedOpens:h=>`Cerrado · abre ${h}`,sunday:"Domingo: llama para confirmar horario",langBtn:"English"}
+  };
+  // Hours in 24h, by day of week (0 = Sunday). null = unknown.
+  const HOURS = {0:[7,14],1:[5,20],2:[5,20],3:[5,20],4:[5,20],5:[5,20],6:[5,18]};
+  // Auto-pick Spanish if the visitor's phone is set to Spanish, and remember their choice
+  let lang = "en";
+  try { lang = localStorage.getItem("lang") || ((navigator.language||"").toLowerCase().startsWith("es") ? "es" : "en"); } catch(e) {}
+
+  function nowInFlorida(){
+    const p = new Intl.DateTimeFormat("en-US",{timeZone:"America/New_York",weekday:"short",hour:"numeric",minute:"numeric",hour12:false}).formatToParts(new Date());
+    const get = t => p.find(x=>x.type===t).value;
+    const day = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(get("weekday"));
+    return {day, hour: (+get("hour"))%24 + (+get("minute"))/60};
+  }
+  const fmt = h => { const ap = h>=12?"pm":"am"; const hr = h%12||12; return `${hr}${ap}`; };
+
+  function updateStatus(){
+    const t = T[lang], {day,hour} = nowInFlorida();
+    const dot = document.getElementById("statusDot"), txt = document.getElementById("statusText");
+    const h = HOURS[day];
+    if (h === null){ dot.className="dot"; txt.textContent=t.sunday; }
+    else if (hour>=h[0] && hour<h[1]){ dot.className="dot open"; txt.textContent=t.openUntil(fmt(h[1])); }
+    else {
+      dot.className="dot closed";
+      let label;
+      if (hour < h[0]) label = (lang==="es"?"hoy a las ":"today at ")+fmt(h[0]);
+      else {
+        const next = HOURS[(day+1)%7];
+        label = next ? (lang==="es"?"mañana a las ":"tomorrow at ")+fmt(next[0]) : (lang==="es"?"el lunes a las 5am":"Monday at 5am");
+      }
+      txt.textContent = t.closedOpens(label);
+    }
+    document.querySelectorAll("#hoursList li").forEach(li=>{
+      const isToday = li.dataset.days.split(",").map(Number).includes(day);
+      li.classList.toggle("today", isToday);
+      li.querySelector("span").dataset.today = t.today;
+    });
+  }
+
+  function applyLang(){
+    const t = T[lang];
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-i18n]").forEach(el=>{ const k=el.dataset.i18n; if(t[k]) el.textContent=t[k]; });
+    document.querySelectorAll("[data-i18n-html]").forEach(el=>{ el.innerHTML=t[el.dataset.i18nHtml]; });
+    const b = document.getElementById("langBtn");
+    b.textContent = t.langBtn;
+    b.setAttribute("aria-label", lang==="en" ? "Cambiar a español" : "Switch to English");
+    updateStatus();
+  }
+
+  // Only show the sticky mobile bar once the hero buttons scroll off screen
+  const bar = document.querySelector(".mobile-bar");
+  bar.classList.add("hide");
+  new IntersectionObserver(([e]) => bar.classList.toggle("hide", e.isIntersecting))
+    .observe(document.querySelector(".cta-row"));
+
+  document.getElementById("langBtn").addEventListener("click",()=>{ lang = lang==="en"?"es":"en"; try{localStorage.setItem("lang",lang)}catch(e){} applyLang(); });
+  applyLang();
+  setInterval(updateStatus, 60000);
+</script>
+</body>
+</html>
